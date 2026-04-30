@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Builder — PortfolioGen</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/resume.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><a href="../index.html" style="text-decoration:none;color:inherit">Portfolio<span>Gen</span></a></div>
+    <div class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="resume.html" class="active">Resume</a>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+    <h1 class="page-title">📄 Resume Builder</h1>
+    <p class="page-sub">Fill in the form to generate your professional resume. Then download as PDF.</p>
+
+    <div class="resume-layout">
+      <!-- FORM -->
+      <div class="resume-form">
+
+        <div class="form-section">
+          <h3>👤 Personal Details</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name *</label><input id="r-name" type="text" placeholder="Your Full Name" oninput="renderResume()"/></div>
+            <div class="form-group"><label>Job Title / Role</label><input id="r-title" type="text" placeholder="e.g. Full Stack Developer" oninput="renderResume()"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email</label><input id="r-email" type="email" placeholder="email@example.com" oninput="renderResume()"/></div>
+            <div class="form-group"><label>Phone</label><input id="r-phone" type="tel" placeholder="+91 XXXXX XXXXX" oninput="renderResume()"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Location</label><input id="r-location" type="text" placeholder="City, State" oninput="renderResume()"/></div>
+            <div class="form-group"><label>LinkedIn</label><input id="r-linkedin" type="url" placeholder="linkedin.com/in/you" oninput="renderResume()"/></div>
+          </div>
+          <div class="form-group"><label>GitHub</label><input id="r-github" type="url" placeholder="github.com/you" oninput="renderResume()"/></div>
+          <div class="form-group full">
+            <label>Professional Summary</label>
+            <textarea id="r-summary" placeholder="Brief professional summary (2–3 sentences)..." oninput="renderResume()"></textarea>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>🎓 Education</h3>
+          <div id="r-edu-list"></div>
+          <button class="btn-add" onclick="rAddEdu()">+ Add Education</button>
+        </div>
+
+        <div class="form-section">
+          <h3>💼 Work Experience / Internship</h3>
+          <div id="r-exp-list"></div>
+          <button class="btn-add" onclick="rAddExp()">+ Add Experience</button>
+        </div>
+
+        <div class="form-section">
+          <h3>⚡ Skills</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Add Skill</label>
+              <input type="text" id="r-skill-input" placeholder="e.g. JavaScript, SQL..." onkeydown="if(event.key==='Enter') rAddSkill()"/>
+            </div>
+            <div class="form-group" style="justify-content:flex-end">
+              <button class="btn-add" style="margin-top:1.4rem" onclick="rAddSkill()">+ Add</button>
+            </div>
+          </div>
+          <div class="tag-input-wrap" id="r-skills-tags"></div>
+        </div>
+
+        <div class="form-section">
+          <h3>🚀 Projects</h3>
+          <div id="r-proj-list"></div>
+          <button class="btn-add" onclick="rAddProject()">+ Add Project</button>
+        </div>
+
+        <div class="form-section">
+          <h3>🏆 Achievements / Certifications</h3>
+          <div id="r-achieve-list"></div>
+          <button class="btn-add" onclick="rAddAchieve()">+ Add Achievement</button>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn-outline" onclick="loadFromLocal()">📂 Load Saved Data</button>
+          <button class="btn-primary" onclick="downloadPDF()">⬇ Download PDF</button>
+        </div>
+      </div>
+
+      <!-- RESUME PREVIEW -->
+      <div class="preview-panel">
+        <div class="preview-label">📄 Resume Preview</div>
+        <div class="resume-preview" id="resume-preview">
+          <!-- Rendered by JS -->
+          <div style="color:var(--muted);text-align:center;padding:3rem;font-size:0.9rem">Fill the form to see your resume preview here</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/resume.js"></script>
+</body>
+</html>

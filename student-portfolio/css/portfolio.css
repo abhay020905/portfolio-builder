@@ -1,0 +1,107 @@
+/* ===== PORTFOLIO BUILDER LAYOUT ===== */
+.builder-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.builder-form { min-width: 0; }
+
+/* ===== PREVIEW PANEL ===== */
+.preview-panel {
+  position: sticky;
+  top: 6rem;
+}
+
+.preview-label {
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--accent);
+  margin-bottom: 0.8rem;
+  text-transform: uppercase;
+}
+
+.portfolio-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  max-height: 80vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+/* ===== PREVIEW INTERNALS ===== */
+.prev-hero {
+  display: flex; align-items: center; gap: 1.2rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.prev-avatar {
+  width: 60px; height: 60px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; font-weight: 800; color: #fff;
+  font-family: var(--font-head);
+  flex-shrink: 0;
+}
+
+.prev-name {
+  font-family: var(--font-head);
+  font-size: 1.2rem; font-weight: 800;
+}
+.prev-role { color: var(--accent); font-size: 0.85rem; margin-top: 0.15rem; }
+.prev-contacts { margin-top: 0.4rem; font-size: 0.75rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.prev-bio {
+  color: var(--muted); font-size: 0.85rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+.prev-section { margin-bottom: 1.2rem; }
+.prev-sec-title {
+  font-family: var(--font-head);
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.6rem;
+}
+
+/* Education/Project entries in preview */
+.prev-edu-item, .prev-proj-item, .prev-achieve-item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.82rem;
+}
+.prev-edu-item strong, .prev-proj-item strong { color: var(--text); }
+.prev-edu-item span, .prev-proj-item span { color: var(--muted); display: block; margin-top: 0.15rem; }
+
+/* Dynamic form entries */
+.dynamic-entry {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.dynamic-entry .remove-btn {
+  position: absolute; top: 0.7rem; right: 0.7rem;
+  background: transparent; border: none;
+  color: var(--muted); cursor: pointer; font-size: 1rem;
+  transition: color 0.2s;
+}
+.dynamic-entry .remove-btn:hover { color: #ff4a6a; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 960px) {
+  .builder-layout { grid-template-columns: 1fr; }
+  .preview-panel { position: static; }
+  .portfolio-card { max-height: none; }
+}
